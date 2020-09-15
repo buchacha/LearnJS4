@@ -1,39 +1,40 @@
-let company = {
-  sales: [{
-    name: 'John',
-    salary: 1000
-  }, {
-    name: 'Alice',
-    salary: 600
-  }],
-
-  development: {
-    sites: [{
-      name: 'Peter',
-      salary: 2000
-    }, {
-      name: 'Alex',
-      salary: 1800
-    }],
-
-    internals: [{
-      name: 'Jack',
-      salary: 1300
-    }]
+let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
   }
 };
 
-// Функция для подсчёта суммы зарплат
-function sumSalaries(department) {
-  if (Array.isArray(department)) { // случай (1)
-    return department.reduce((prev, current) => prev + current.salary, 0); // сумма элементов массива
-  } else { // случай (2)
-    let sum = 0;
-    for (let subdep of Object.values(department)) {
-      sum += sumSalaries(subdep); // рекурсивно вызывается для подотделов, суммируя результаты
-    }
-    return sum;
+function printListWhile(list) {
+  let tmp = list;
+
+  while (tmp) {
+    alert(tmp.value);
+    tmp = tmp.next;
   }
+
 }
 
-alert(sumSalaries(company)); // 6700
+function printListRecursive(list) {
+
+//   alert(list.value); // выводим текущий элемент
+
+  if (list.next) {
+    printListRecursive(list.next); // делаем то же самое для остальной части списка
+  }
+
+}
+
+
+let start = new Date();
+printListWhile(list);
+alert((new Date() - start)/1000 + " секунд")
+printListRecursive(list);
+
