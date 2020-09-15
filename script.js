@@ -1,5 +1,13 @@
-let timerId = setTimeout(() => alert("ничего не происходит"), 1000);
-alert(timerId); // идентификатор таймера
+let delay = 5000;
 
-clearTimeout(timerId);
-alert(timerId); // тот же идентификатор (не принимает значение null после отмены)
+let timerId = setTimeout(function request() {
+  ...отправить запрос...
+
+  if (ошибка запроса из-за перегрузки сервера) {
+    // увеличить интервал для следующего запроса
+    delay *= 2;
+  }
+
+  timerId = setTimeout(request, delay);
+
+}, delay);
