@@ -1,20 +1,12 @@
-function makeCounter() {
-  // вместо
-  // let count = 0
+let sayHi = function func(who) {
+  if (who) {
+    alert(`Hello, ${who}`);
+  } else {
+    func("Guest"); // Теперь всё в порядке
+  }
+};
 
-  function counter() {
-    return counter.count++;
-  };
+let welcome = sayHi;
+sayHi = null;
 
-  counter.count = 0;
-
-  return counter;
-}
-
-let counter = makeCounter();
-alert( counter() ); // 0
-alert( counter() ); // 1
-
-
-counter.count = 10;
-alert( counter() ); // 10
+welcome(); // Hello, Guest (вложенный вызов работает)
