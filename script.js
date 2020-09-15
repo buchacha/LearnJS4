@@ -1,14 +1,9 @@
-function makeCounter() {
-  let count = 0;
-  return function() {
-    return count++;
-  };
+function f() {
+  let value = 123;
+
+  function g() { alert(value); }
+
+  return g;
 }
 
-let counter1 = makeCounter();
-let counter2 = makeCounter();
-
-alert( counter1() ); // 0
-alert( counter1() ); // 1
-
-alert( counter2() ); // 0 (независимо)
+let g = f();
