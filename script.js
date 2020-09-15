@@ -1,9 +1,18 @@
-function f() {
-  let value = 123;
+let users = [
+  { name: "John", age: 20, surname: "Johnson" },
+  { name: "Pete", age: 18, surname: "Peterson" },
+  { name: "Ann", age: 19, surname: "Hathaway" }
+];
 
-  function g() { alert(value); }
-
-  return g;
+function byField(field) {
+    return (a, b) => 
+    (a[field] > b[field]) 
+    ? 1 : (a[field] == b[field]) 
+    ? 0 : -1 ;
 }
 
-let g = f();
+users.sort(byField('name'));
+users.forEach(user => alert(user.name)); // Ann, John, Pete
+
+users.sort(byField('age'));
+users.forEach(user => alert(user.name)); // Pete, Ann, John
