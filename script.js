@@ -1,15 +1,14 @@
-let arr1 = [1, {john:12}, 3, 4];
+function makeCounter() {
+  let count = 0;
+  return function() {
+    return count++;
+  };
+}
 
+let counter1 = makeCounter();
+let counter2 = makeCounter();
 
-let arr2 = [...arr1];
+alert( counter1() ); // 0
+alert( counter1() ); // 1
 
-arr3 = arr1;
-
-alert(arr1 === arr2); // false
-
-alert(arr1 === arr3); // true
-
-
-arr2[1].john = 34; 
-
-alert(arr1[1].john); // 34
+alert( counter2() ); // 0 (независимо)
