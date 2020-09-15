@@ -1,13 +1,13 @@
-let delay = 5000;
+let delay = 3000;
 
 let timerId = setTimeout(function request() {
-  ...отправить запрос...
+  
+  let answer = confirm('Запрашиваем данные с сервера?');
 
-  if (ошибка запроса из-за перегрузки сервера) {
-    // увеличить интервал для следующего запроса
-    delay *= 2;
+  if (answer) {
+    timerId = setTimeout(request, delay);
+  } else {
+    alert('Всего хорошего');
   }
-
-  timerId = setTimeout(request, delay);
 
 }, delay);
