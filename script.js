@@ -1,8 +1,20 @@
-function sum(outterVal) {
-    return (innerVal) => outterVal+innerVal;
+function makeCounter() {
+  // вместо
+  // let count = 0
+
+  function counter() {
+    return counter.count++;
+  };
+
+  counter.count = 0;
+
+  return counter;
 }
 
+let counter = makeCounter();
+alert( counter() ); // 0
+alert( counter() ); // 1
 
-alert(sum(1)(2));
 
-alert(sum(5)(-1));
+counter.count = 10;
+alert( counter() ); // 10
