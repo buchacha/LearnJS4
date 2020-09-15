@@ -1,40 +1,4 @@
-let list = {
-  value: 1,
-  next: {
-    value: 2,
-    next: {
-      value: 3,
-      next: {
-        value: 4,
-        next: null
-      }
-    }
-  }
-};
+let arr1 = [1, -2, 3, 4];
+let arr2 = [8, 3, -8, 1];
 
-function printListWhile(list) {
-  let tmp = list;
-
-  while (tmp) {
-    alert(tmp.value);
-    tmp = tmp.next;
-  }
-
-}
-
-function printListRecursive(list) {
-
-//   alert(list.value); // выводим текущий элемент
-
-  if (list.next) {
-    printListRecursive(list.next); // делаем то же самое для остальной части списка
-  }
-
-}
-
-
-let start = new Date();
-printListWhile(list);
-alert((new Date() - start)/1000 + " секунд")
-printListRecursive(list);
-
+alert( Math.max(1, ...arr1, 2, ...arr2, 25) ); // 25
