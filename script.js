@@ -1,13 +1,3 @@
-let delay = 3000;
+setTimeout(() => alert("Мир"));
 
-let timerId = setTimeout(function request() {
-  
-  let answer = confirm('Запрашиваем данные с сервера?');
-
-  if (answer) {
-    timerId = setTimeout(request, delay);
-  } else {
-    alert('Всего хорошего');
-  }
-
-}, delay);
+alert("Привет");
