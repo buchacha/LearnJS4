@@ -1,16 +1,16 @@
-let user = {
-  name: "John",
-  toString() {
-    return this.name;
-  }
-};
+'use strict'
 
-// По умолчанию оба свойства выведутся:
-for (let key in user) alert(key); // name, toString
+let obj = {};
 
-Object.defineProperty(user, "toString", {
-  enumerable: false
+Object.defineProperties(obj, {
+  name: { value: "John", writable: false },
+  surname: { value: "Smith", writable: false },
+  // ...
 });
 
-// Теперь наше свойство toString пропало из цикла:
-for (let key in user) alert(key); // name
+// key in obj ничего не выведет
+for (let key in Object.getOwnPropertyDescriptors(obj)) {
+    alert(key);
+    let descriptor = Object.getOwnPropertyDescriptor(obj, key);
+    alert(descriptor.writable); // false
+}
