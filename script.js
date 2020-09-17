@@ -1,15 +1,16 @@
 let user = {
-  name: "John"
+  name: "John",
+  toString() {
+    return this.name;
+  }
 };
 
-let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+// По умолчанию оба свойства выведутся:
+for (let key in user) alert(key); // name, toString
 
-alert( JSON.stringify(descriptor, null, 2 ) );
-/* дескриптор свойства:
-{
-  "value": "John",
-  "writable": true,
-  "enumerable": true,
-  "configurable": true
-}
-*/
+Object.defineProperty(user, "toString", {
+  enumerable: false
+});
+
+// Теперь наше свойство toString пропало из цикла:
+for (let key in user) alert(key); // name
