@@ -1,16 +1,10 @@
-'use strict'
+Function.prototype.defer = function(ms) {
+  setTimeout(this, ms);
+};
 
-let obj = {};
-
-Object.defineProperties(obj, {
-  name: { value: "John", writable: false },
-  surname: { value: "Smith", writable: false },
-  // ...
-});
-
-// key in obj ничего не выведет
-for (let key in Object.getOwnPropertyDescriptors(obj)) {
-    alert(key);
-    let descriptor = Object.getOwnPropertyDescriptor(obj, key);
-    alert(descriptor.writable); // false
+function f() {
+  alert("Hello!");
 }
+
+let s = prompt('Через сколько сек. с Вами поздороваться?', 0)
+f.defer(s*1000); // выведет "Hello!" через 1 секунду
